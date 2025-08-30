@@ -2,6 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
+###
+# DEVELOPMENT ROADMAP:
+# 1. Use modules to make code cleaner and robust
+# 2. Figure out a clever way to use nix shell
+# 3. Start using Nix Flakes
+# 4. Nix Home Manager for user space
+# 5. Switch to experimental
+# 
+# Additional:
+# Write TODOs in each line where improvement can be made 
+# Specify tasks in Trello
+###
+
 { config, pkgs, ... }:
 
 {
@@ -29,7 +42,7 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
+  i18n.supportedLocales = ["all"]; # TODO: make polish as a second language
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "pl_PL.UTF-8";
     LC_IDENTIFICATION = "pl_PL.UTF-8";
@@ -103,10 +116,26 @@
   environment.systemPackages = with pkgs; [
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
-     git
+     git #TODO: use Home Manager version instead, as it allows for greater control
      gh
-     vscode	
-  ];
+     vscode
+     (vscode-with-extensions.override { # Idk this doesn't work, TODO: use flake option with dynamic updates
+    vscodeExtensions = with vscode-extensions; [
+      bbenoist.nix
+      ms-python.python
+      ms-azuretools.vscode-docker
+      ms-vscode-remote.remote-ssh
+    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "remote-ssh-edit";
+        publisher = "ms-vscode-remote";
+        version = "0.47.2";
+        sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
+      }
+    ];
+     })	
+ 
+ ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
