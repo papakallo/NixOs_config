@@ -27,8 +27,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # downloading drivers for Realtek wifi module 
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+  rtl8192eu
+  ];
+  hardware.enableRedistributableFirmware = true;
+
   networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
