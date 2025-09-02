@@ -140,7 +140,10 @@
       }
     ];
      })	
- 
+
+    libreoffice-qt
+    hunspell
+    hunspellDicts.pl_PL 
  ];
 
   # Some programs need SUID wrappers, can be configured further or are
