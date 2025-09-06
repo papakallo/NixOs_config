@@ -144,6 +144,8 @@
     libreoffice-qt
     hunspell
     hunspellDicts.pl_PL 
+
+    spotify
  ];
 
  programs.steam = {
