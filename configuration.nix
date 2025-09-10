@@ -27,6 +27,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # ACHTUNG, flakes!!!
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # downloading drivers for Realtek wifi module 
   boot.extraModulePackages = with config.boot.kernelPackages; [
   rtl8192eu
