@@ -11,11 +11,33 @@ in
     /* The home.stateVersion option does not have a default and must be set */
     home.stateVersion = "18.09";
     /* Here goes the rest of your home-manager config, e.g. home.packages = [ pkgs.foo ]; */
+    
+    nixpkgs.config.allowUnfree = true;
 
     home.packages = [
       pkgs.unzip
       pkgs.vlc
-      
+      pkgs.obs-studio
+      pkgs.gimp3-with-plugins
+      pkgs.wget
+#      pkgs.git
+      pkgs.vscode
     ];
+
+    programs.git = {
+      enable = true;
+      userName = "Paakallo";
+      userEmail = "paviveerar@gmail.com";
+    };
+
+    programs.vscode = {
+      enable = true;
+      profiles.default.extensions = with pkgs.vscode-extensions; [
+        dracula-theme.theme-dracula
+        vscodevim.vim
+        yzhang.markdown-all-in-one
+      ];
+    };
+
   };
 }

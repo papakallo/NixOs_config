@@ -28,6 +28,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+
   # ACHTUNG, flakes!!!
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -125,25 +126,25 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget
-     git #TODO: use Home Manager version instead, as it allows for greater control
-     gh
-     vscode
-     (vscode-with-extensions.override { # Idk this doesn't work, TODO: use flake option with dynamic updates
-    vscodeExtensions = with vscode-extensions; [
-      bbenoist.nix
-      ms-python.python
-      ms-azuretools.vscode-docker
-      ms-vscode-remote.remote-ssh
-    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      {
-        name = "remote-ssh-edit";
-        publisher = "ms-vscode-remote";
-        version = "0.47.2";
-        sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
-      }
-    ];
-     })	
+    #  wget
+     git
+    #  gh
+    #  vscode
+    #  (vscode-with-extensions.override { # Idk this doesn't work, TODO: use flake option with dynamic updates
+    # vscodeExtensions = with vscode-extensions; [
+    #   bbenoist.nix
+    #   ms-python.python
+    #   ms-azuretools.vscode-docker
+    #   ms-vscode-remote.remote-ssh
+    # ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    #   {
+    #     name = "remote-ssh-edit";
+    #     publisher = "ms-vscode-remote";
+    #     version = "0.47.2";
+    #     sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
+    #   }
+    # ];
+    #  })	
 
     libreoffice-qt
     hunspell
