@@ -20,10 +20,12 @@ in
       pkgs.obs-studio
       pkgs.gimp3-with-plugins
       pkgs.wget
-#      pkgs.git
-#      pkgs.gh
       pkgs.vscode
-      
+      pkgs.libreoffice-qt
+      pkgs.hunspell
+      pkgs.hunspellDicts.pl_PL 
+      pkgs.spotify
+	
     ];
 
     programs.git = {
@@ -38,6 +40,13 @@ in
         dracula-theme.theme-dracula
         vscodevim.vim
         yzhang.markdown-all-in-one
+	zainchen.json
+        ms-python.python
+        ms-python.debugpy
+	ms-vscode.cpptools
+	ms-vscode.cmake-tools
+	ms-vscode-remote.remote-ssh
+	
       ];
     };
 

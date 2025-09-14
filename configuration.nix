@@ -146,11 +146,11 @@
     # ];
     #  })	
 
-    libreoffice-qt
-    hunspell
-    hunspellDicts.pl_PL 
+#    libreoffice-qt
+#    hunspell
+#    hunspellDicts.pl_PL 
 
-    spotify
+#    spotify
  ];
 
  programs.steam = {
