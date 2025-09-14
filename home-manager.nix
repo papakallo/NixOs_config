@@ -21,7 +21,7 @@ in
       pkgs.gimp3-with-plugins
       pkgs.wget
 #      pkgs.git
-      pkgs.gh
+#      pkgs.gh
       pkgs.vscode
       
     ];

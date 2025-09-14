@@ -128,7 +128,7 @@
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
      git
-    #  gh
+     gh
     #  vscode
     #  (vscode-with-extensions.override { # Idk this doesn't work, TODO: use flake option with dynamic updates
     # vscodeExtensions = with vscode-extensions; [
