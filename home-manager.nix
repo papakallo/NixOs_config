@@ -45,6 +45,7 @@ in
         ms-python.debugpy
 	ms-vscode.cpptools
 	ms-vscode.cmake-tools
+#        ms-vscode.cpptools-themes
 	ms-vscode-remote.remote-ssh
 	
       ];
