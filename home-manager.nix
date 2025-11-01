@@ -25,6 +25,7 @@ in
       pkgs.hunspell
       pkgs.hunspellDicts.pl_PL 
       pkgs.spotify
+      pkgs.dosbox-staging
 	
     ];
 
