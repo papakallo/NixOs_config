@@ -137,6 +137,12 @@
   localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
  };
 
+ # virtualbox
+ virtualisation.virtualbox.host.enable = true;
+ users.extraGroups.vboxusers.members = [ "paakallo" ];
+
+
+ #docker
  virtualisation.docker.enable = true;
  virtualisation.docker.storageDriver = "btrfs"; 
   
