@@ -4,15 +4,17 @@
 
 ###
 # DEVELOPMENT ROADMAP:
-# 1. Use modules to make code cleaner and robust
-# 2. Figure out a clever way to use nix shell
+# + Use modules to make code cleaner and robust
+# + Figure out a clever way to use nix shell
 # 3. Start using Nix Flakes
-# 4. Nix Home Manager for user space
+# + Nix Home Manager for user space
 # 5. Switch to experimental
 # 
 # Additional:
 # Write TODOs in each line where improvement can be made 
 # Specify tasks in Trello
+
+
 ###
 
 { config, pkgs, ... }:
@@ -137,6 +139,7 @@
   localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
  };
 
+ # packages = with pkgs; [ virtualbox ];
  # virtualbox
  virtualisation.virtualbox.host.enable = true;
  users.extraGroups.vboxusers.members = [ "paakallo" ];
