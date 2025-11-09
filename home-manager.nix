@@ -32,6 +32,7 @@ in
       pkgs.dosbox-staging
 #      logseq-patch	
       pkgs.logseq
+      pkgs.openmw
     ];
 
     programs.git = {
