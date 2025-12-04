@@ -160,6 +160,7 @@
  virtualisation.docker.enable = true;
  virtualisation.docker.storageDriver = "btrfs"; 
 
+ services.flatpak.enable = true;
 
 # virtualisation.podman = {
 #  enable = true;
