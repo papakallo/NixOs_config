@@ -2,9 +2,9 @@
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   # Create a customized version of logseq
-  logseq-patch = pkgs.logseq.override {
-    electron_27 = pkgs.electron_34;
-  };
+#  logseq-patch = pkgs.logseq.override {
+#    electron_27 = pkgs.electron_34;
+#  };
 in
 {
   imports = [
@@ -31,7 +31,7 @@ in
       pkgs.spotify
       pkgs.dosbox-staging
 #      logseq-patch	
-      pkgs.logseq
+#      pkgs.logseq
       pkgs.openmw
     ];
 

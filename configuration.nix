@@ -35,12 +35,12 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # downloading drivers for Realtek wifi module 
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-  rtl8192eu
-  ];
+#  boot.extraModulePackages = with config.boot.kernelPackages; [
+#  rtl8192eu
+#  ];
   hardware.enableRedistributableFirmware = true;
 
-  networking.hostName = "samael"; # Define your hostname.
+  networking.hostName = "light"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -71,7 +71,7 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+#  services.xserver.enable = true;
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -153,7 +153,7 @@
  # packages = with pkgs; [ virtualbox ];
  # virtualbox
  virtualisation.virtualbox.host.enable = true;
- users.extraGroups.vboxusers.members = [ "paakallo" ];
+ users.extraGroups.vboxusers.members = [ "papakallo" ];
 
 
  #docker
