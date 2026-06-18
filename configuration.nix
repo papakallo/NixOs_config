@@ -105,9 +105,9 @@
   services.syncthing = {
     enable = true;
     group = "syncthing";
-    user = "paakallo";
-    dataDir = "/home/paakallo/Documents";
-    configDir = "/home/paakallo/.config/syncthing";
+    user = "papakallo";
+    dataDir = "/home/papakallo/Documents";
+    configDir = "/home/papakallo/.config/syncthing";
   };
 
 
@@ -116,7 +116,7 @@
 
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.paakallo = {
+  users.users.papakallo = {
     isNormalUser = true;
     description = "Sergiusz Pyskowacki";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
