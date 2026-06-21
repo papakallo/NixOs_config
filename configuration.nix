@@ -17,7 +17,7 @@
 
 ###
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =

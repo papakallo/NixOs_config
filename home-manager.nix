@@ -1,23 +1,21 @@
-{ config, pkgs, ... }:
-let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+{ config, pkgs, inputs, ... }:
   # Create a customized version of logseq
 #  logseq-patch = pkgs.logseq.override {
 #    electron_27 = pkgs.electron_34;
 #  };
-in
 {
   imports = [
-    (import "${home-manager}/nixos")
+    inputs.home-manager.nixosModules.home-manager
   ];
+
+  home-manager.useGlobalPkgs = true; # forces Home Manager to use the system's pkgs (which knows about your Flake inputs) instead of trying to evaluate import <nixpkgs>
+  home-manager.useUserPackages = true; # It installs user packages into /etc/profiles instead of ~/.nix-profile. This keeps your environment cleaner and ties user packages directly to the system generations.
 
   home-manager.users.papakallo = {
     /* The home.stateVersion option does not have a default and must be set */
     home.stateVersion = "18.09";
     /* Here goes the rest of your home-manager config, e.g. home.packages = [ pkgs.foo ]; */
     
-    nixpkgs.config.allowUnfree = true;
-
     home.packages = [
       pkgs.unzip
       pkgs.vlc
