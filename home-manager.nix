@@ -13,7 +13,7 @@
 
   home-manager.users.papakallo = {
     /* The home.stateVersion option does not have a default and must be set */
-    home.stateVersion = "18.09";
+    home.stateVersion = "26.05";
     /* Here goes the rest of your home-manager config, e.g. home.packages = [ pkgs.foo ]; */
     
     home.packages = [
@@ -35,8 +35,8 @@
 
     programs.git = {
       enable = true;
-      userName = "papakallo";
-      userEmail = "paviveerar@gmail.com";
+      settings.user.name = "papakallo";
+      settings.user.email = "paviveerar@gmail.com";
     };
 
     programs.vscode = {
