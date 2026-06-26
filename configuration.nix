@@ -2,20 +2,6 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-###
-# DEVELOPMENT ROADMAP:
-# + Use modules to make code cleaner and robust
-# + Figure out a clever way to use nix shell
-# 3. Start using Nix Flakes
-# + Nix Home Manager for user space
-# 5. Switch to experimental
-# 
-# Additional:
-# Write TODOs in each line where improvement can be made 
-# Specify tasks in Trello
-
-
-###
 
 { config, pkgs, inputs, ... }:
 
@@ -31,14 +17,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
 
-  # ACHTUNG, flakes!!!
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # downloading drivers for Realtek wifi module 
-#  boot.extraModulePackages = with config.boot.kernelPackages; [
-#  rtl8192eu
-#  ];
-  hardware.enableRedistributableFirmware = true;
 
   networking.hostName = "light"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -120,13 +99,13 @@
     isNormalUser = true;
     description = "Sergiusz Pyskowacki";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-      telegram-desktop
-      discord-ptb
-      distrobox
-    ];
+    # packages = with pkgs; [
+    #   kdePackages.kate
+    # #  thunderbird
+    #   telegram-desktop
+    #   discord-ptb
+    #   distrobox
+    # ];
   };
 
   # Install firefox.
