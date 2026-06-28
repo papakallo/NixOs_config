@@ -35,6 +35,7 @@
       discord-ptb
       distrobox
       atlauncher
+      feh
     ];
 
     programs.git = {
