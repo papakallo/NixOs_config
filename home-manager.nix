@@ -17,8 +17,6 @@
     home.stateVersion = "26.05";
     /* Here goes the rest of your home-manager config, e.g. home.packages = [ pkgs.foo ]; */
     
-#xdg.configFile."nvim".source = ../nvim;
-    # Symlink Neovim config directory
     home.packages = with pkgs; [
       unzip
       vlc
@@ -65,6 +63,7 @@
     programs.neovim = {
       enable = true;
    };
+
 
 
     xdg.configFile."nvim".source = "${inputs.nvim-config}";
