@@ -36,10 +36,28 @@
         "type": "github"
       }
     },
+    "nvim-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781725049,
+        "narHash": "sha256-zsq3rQUWnTsGa8YPdY12Ujj7p2sdsoTCaCgVuTcgIDo=",
+        "owner": "papakallo",
+        "repo": "kickstart.nvim",
+        "rev": "c83144ea4b271ff64dcacb76a615d200344c7a4e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "papakallo",
+        "ref": "master",
+        "repo": "kickstart.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nvim-config": "nvim-config"
       }
     }
   },

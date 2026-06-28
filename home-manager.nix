@@ -8,15 +8,17 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  home-manager.useGlobalPkgs = true; # forces Home Manager to use the system's pkgs (which knows about your Flake inputs) instead of trying to evaluate import <nixpkgs>
+  home-manager.useGlobalPkgs = true; # forces Home Manager to use the system's pkgs (which knows about Flake inputs) instead of trying to evaluate import <nixpkgs>
   home-manager.useUserPackages = true; # It installs user packages into /etc/profiles instead of ~/.nix-profile. This keeps your environment cleaner and ties user packages directly to the system generations.
-  home-manager.backupFileExtension = "backup";
 
-  home-manager.users.papakallo = {
+
+  home-manager.users.papakallo = { config, lib, ... }: {
     /* The home.stateVersion option does not have a default and must be set */
     home.stateVersion = "26.05";
     /* Here goes the rest of your home-manager config, e.g. home.packages = [ pkgs.foo ]; */
     
+#xdg.configFile."nvim".source = ../nvim;
+    # Symlink Neovim config directory
     home.packages = with pkgs; [
       unzip
       vlc
@@ -62,10 +64,9 @@
 
     programs.neovim = {
       enable = true;
-      #extraConfig = ''
-      #  set number relativenumber
-      #  '';
    };
 
+
+    xdg.configFile."nvim".source = "${inputs.nvim-config}";
   };
 }
