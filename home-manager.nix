@@ -36,6 +36,7 @@
       distrobox
       atlauncher
       feh
+      kicad
     ];
 
     programs.git = {
