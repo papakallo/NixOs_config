@@ -37,6 +37,7 @@
       atlauncher
       feh
       kicad
+      freecad
     ];
 
     programs.git = {
@@ -65,8 +66,6 @@
     programs.neovim = {
       enable = true;
    };
-
-
 
     xdg.configFile."nvim".source = "${inputs.nvim-config}";
   };
