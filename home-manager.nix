@@ -40,6 +40,7 @@
       freecad
       nomachine-client
       signal-desktop
+      element-desktop
     ];
 
     programs.git = {
