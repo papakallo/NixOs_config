@@ -38,6 +38,7 @@
       feh
       kicad
       freecad
+      nomachine-client
     ];
 
     programs.git = {
