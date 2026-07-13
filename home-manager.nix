@@ -39,6 +39,7 @@
       kicad
       freecad
       nomachine-client
+      signal-desktop
     ];
 
     programs.git = {
