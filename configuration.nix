@@ -2,26 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-###
-# DEVELOPMENT ROADMAP:
-# + Use modules to make code cleaner and robust
-# + Figure out a clever way to use nix shell
-# 3. Start using Nix Flakes
-# + Nix Home Manager for user space
-# 5. Switch to experimental
-# 
-# Additional:
-# Write TODOs in each line where improvement can be made 
-# Specify tasks in Trello
 
-
-###
-
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       ./home-manager.nix
     ];
@@ -31,26 +17,18 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
 
-  # ACHTUNG, flakes!!!
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # downloading drivers for Realtek wifi module 
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-  rtl8192eu
-  ];
-  hardware.enableRedistributableFirmware = true;
-
-  networking.hostName = "samael"; # Define your hostname.
+  networking.hostName = "light";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
   networking.networkmanager.enable = true;
+  hardware.bluetooth.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
   # Select internationalisation properties.
@@ -69,9 +47,6 @@
   };
 
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -101,7 +76,7 @@
     #media-session.enable = true;
   };
 
-  #syncthing
+  # syncthing
   services.syncthing = {
     enable = true;
     group = "syncthing";
@@ -120,17 +95,8 @@
     isNormalUser = true;
     description = "Sergiusz Pyskowacki";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-      telegram-desktop
-      discord-ptb
-      distrobox
-    ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -143,24 +109,30 @@
      gh
    ];
 
- programs.steam = {
-  enable = true;
-  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
- };
 
- # packages = with pkgs; [ virtualbox ];
+  programs.firefox.enable = true;
+
+  programs.steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+      localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+      gamescopeSession.enable = true;
+    };
+
+
  # virtualbox
  virtualisation.virtualbox.host.enable = true;
- users.extraGroups.vboxusers.members = [ "paakallo" ];
-
+ users.extraGroups.vboxusers.members = [ "papakallo" ];
 
  #docker
  virtualisation.docker.enable = true;
  virtualisation.docker.storageDriver = "btrfs"; 
 
  services.flatpak.enable = true;
+ programs.appimage.enable = true;
+ programs.appimage.binfmt = true;
+
 
 # virtualisation.podman = {
 #  enable = true;

@@ -1,44 +1,52 @@
-{ config, pkgs, ... }:
-let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+{ config, pkgs, inputs, ... }:
   # Create a customized version of logseq
-  logseq-patch = pkgs.logseq.override {
-    electron_27 = pkgs.electron_34;
-  };
-in
+#  logseq-patch = pkgs.logseq.override {
+#    electron_27 = pkgs.electron_34;
+#  };
 {
   imports = [
-    (import "${home-manager}/nixos")
+    inputs.home-manager.nixosModules.home-manager
   ];
 
-  home-manager.users.papakallo = {
+  home-manager.useGlobalPkgs = true; # forces Home Manager to use the system's pkgs (which knows about Flake inputs) instead of trying to evaluate import <nixpkgs>
+  home-manager.useUserPackages = true; # It installs user packages into /etc/profiles instead of ~/.nix-profile. This keeps your environment cleaner and ties user packages directly to the system generations.
+
+
+  home-manager.users.papakallo = { config, lib, ... }: {
     /* The home.stateVersion option does not have a default and must be set */
-    home.stateVersion = "18.09";
+    home.stateVersion = "26.05";
     /* Here goes the rest of your home-manager config, e.g. home.packages = [ pkgs.foo ]; */
     
-    nixpkgs.config.allowUnfree = true;
-
-    home.packages = [
-      pkgs.unzip
-      pkgs.vlc
-      pkgs.obs-studio
-      pkgs.gimp3-with-plugins
-      pkgs.wget
-      pkgs.vscode
-      pkgs.libreoffice-qt
-      pkgs.hunspell
-      pkgs.hunspellDicts.pl_PL 
-      pkgs.spotify
-      pkgs.dosbox-staging
-#      logseq-patch	
-      pkgs.logseq
-      pkgs.openmw
+    home.packages = with pkgs; [
+      unzip
+      vlc
+      obs-studio
+      gimp3-with-plugins
+      wget
+      vscode
+      libreoffice-qt
+      hunspell
+      hunspellDicts.pl_PL 
+      spotify
+      dosbox-staging
+      openmw
+      kdePackages.kate
+      telegram-desktop
+      discord-ptb
+      distrobox
+      atlauncher
+      feh
+      kicad
+      freecad
+      nomachine-client
+      signal-desktop
+      element-desktop
     ];
 
     programs.git = {
       enable = true;
-      userName = "papakallo";
-      userEmail = "paviveerar@gmail.com";
+      settings.user.name = "papakallo";
+      settings.user.email = "paviveerar@gmail.com";
     };
 
     programs.vscode = {
@@ -60,10 +68,8 @@ in
 
     programs.neovim = {
       enable = true;
-      #extraConfig = ''
-      #  set number relativenumber
-      #  '';
    };
 
+    xdg.configFile."nvim".source = "${inputs.nvim-config}";
   };
 }
