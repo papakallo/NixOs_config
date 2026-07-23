@@ -13,8 +13,14 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    grub = {
+      enable = true;
+      device = "nodev"; # "nodev" is used for UEFI
+      efiSupport = true;
+    };
+    efi.canTouchEfiVariables = true;
+  };
 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
