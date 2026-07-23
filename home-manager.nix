@@ -37,7 +37,8 @@
       atlauncher
       feh
       kicad
-      freecad
+      # temporarily removed, because the branch is very unstable
+      # freecad
       nomachine-client
       signal-desktop
       element-desktop
