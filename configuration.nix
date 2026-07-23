@@ -53,7 +53,7 @@
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us,pl,ru,ua";
+    layout = "pl,ru,ua,de";
     variant = "";
   };
 
