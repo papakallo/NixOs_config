@@ -135,15 +135,16 @@
  virtualisation.docker.enable = true;
  virtualisation.docker.storageDriver = "btrfs"; 
 
+ virtualisation.podman = {
+  enable = true;
+  # dockerCompat = true;
+ };
+
+
  services.flatpak.enable = true;
  programs.appimage.enable = true;
  programs.appimage.binfmt = true;
 
-
-# virtualisation.podman = {
-#  enable = true;
-#  dockerCompat = true;
-# };
 
  programs.nix-ld.enable = true;  
  
