@@ -135,10 +135,10 @@
  virtualisation.docker.enable = true;
  virtualisation.docker.storageDriver = "btrfs"; 
 
- virtualisation.podman = {
-  enable = true;
-  # dockerCompat = true;
- };
+ # virtualisation.podman = {
+ #  enable = true;
+ #  dockerCompat = true;
+ # };
 
 
  services.flatpak.enable = true;
@@ -159,7 +159,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 8384 22000 ];
