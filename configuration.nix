@@ -146,8 +146,16 @@
  programs.appimage.binfmt = true;
 
 
- programs.nix-ld.enable = true;  
- 
+ programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+        stdenv.cc.cc
+        zlib
+        glibc
+        openssl
+    ];
+ };
+
 # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
