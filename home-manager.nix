@@ -44,6 +44,10 @@
       element-desktop
     ];
 
+    programs.zsh = {
+        enable = true;
+    };
+
     programs.git = {
       enable = true;
       settings.user.name = "papakallo";
