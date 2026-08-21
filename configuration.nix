@@ -99,7 +99,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.papakallo = {
     isNormalUser = true;
-    description = "Sergiusz Pyskowacki";
+    description = "Papakallo";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
