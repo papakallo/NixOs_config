@@ -42,6 +42,7 @@
       nomachine-client
       signal-desktop
       element-desktop
+      kitty
     ];
 
     programs.zsh = {
@@ -76,5 +77,22 @@
    };
 
     xdg.configFile."nvim".source = "${inputs.nvim-config}";
+
+    # ricing
+    programs.waybar.enable = true;
+
+    wayland.windowManager.sway = {
+      enable = true;
+      wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
+      config = rec {
+        modifier = "Mod4";
+        terminal = "kitty";
+        # startup = [
+        #   # Launch Firefox on start
+        #   { command = "firefox"; }
+        # ];
+      };
+    };
+
   };
 }
