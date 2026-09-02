@@ -154,6 +154,7 @@ services.greetd = {
      vim
      git
      gh
+     brightnessctl
    ];
 
 

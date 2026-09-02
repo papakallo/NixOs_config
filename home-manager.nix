@@ -91,6 +91,30 @@
         #   # Launch Firefox on start
         #   { command = "firefox"; }
         # ];
+        input = {
+            "type:touchpad" = {
+                # Enables or disables tap for specified input device.
+                tap = "enabled";
+                # Enables or disables natural (inverted) scrolling for the specified input device.
+                natural_scroll = "enabled";
+                # Enables or disables disable-while-typing for the specified input device.
+                dwt = "enabled";
+            };
+        };
+
+        keybindings = {
+            # Brightness Controls
+            "Ctrl+F7" = "exec brightnessctl set 5%-";
+            "Ctrl+F8" = "exec brightnessctl set 5%+";
+
+            # Volume Controls
+            # "Ctrl+F3" = "exec pactl set-sink-volume @DEFAULT_SINK@ +1%";
+            # "Ctrl+F2" = "exec pactl set-sink-volume @DEFAULT_SINK@ -1%";
+            # "Ctrl+F1" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+            "Ctrl+F3" = "exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
+            "Ctrl+F2" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+            "Ctrl+F1" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+        };
       };
     };
 
