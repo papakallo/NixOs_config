@@ -34,6 +34,7 @@ services.greetd = {
   environment.etc."greetd/environments".text = ''
     sway
     bash
+    startplasma-wayland
   '';
 
   # Bootloader.
