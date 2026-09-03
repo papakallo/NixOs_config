@@ -81,6 +81,18 @@
     # ricing
     programs.waybar.enable = true;
 
+    programs.swaylock = {
+      enable = true;
+      settings = {
+        color = "808080";
+        font-size = 24;
+        indicator-idle-visible = false;
+        indicator-radius = 100;
+        line-color = "ffffff";
+        show-failed-attempts = true;
+      };
+    };
+
     wayland.windowManager.sway = {
       enable = true;
       wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
@@ -174,7 +186,7 @@
             "Mod4+Shift+c" = "reload";
 
             # Lock Screen
-            "Ctrl+Shift+l" = "exec swaymsg exit";
+            "Ctrl+Shift+l" = "exec swaylock -f";
 
             # PowerOff
             "Mod4+c+h+u+j" = "exec poweroff";
