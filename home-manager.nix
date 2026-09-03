@@ -45,6 +45,7 @@
       kitty
       ddcutil
       findutils
+      gawk
     ];
 
     programs.zsh = {
