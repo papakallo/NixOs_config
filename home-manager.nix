@@ -123,10 +123,28 @@
             "Mod4+7" = "workspace number 7";
             "Mod4+8" = "workspace number 8";
             "Mod4+9" = "workspace number 9";
+
+            # Focus
+            # Arrow Motions
             "Mod4+Down" = "focus down";
             "Mod4+Left" = "focus left";
-            "Mod4+Return" = "exec kitty";
             "Mod4+Right" = "focus right";
+            "Mod4+Up" = "focus up";
+            # Vim Motions
+            "Mod4+h" = "focus left";
+            "Mod4+j" = "focus down";
+            "Mod4+k" = "focus up";
+            "Mod4+l" = "focus right";
+            # Other
+            "Mod4+a" = "focus parent";
+            "Mod4+space" = "focus mode_toggle";
+
+            "Mod4+r" = "mode resize";
+
+            # Terminal
+            "Mod4+Home" = "exec kitty";
+
+            # move window to other workspace
             "Mod4+Shift+0" = "move container to workspace number 10";
             "Mod4+Shift+1" = "move container to workspace number 1";
             "Mod4+Shift+2" = "move container to workspace number 2";
@@ -137,43 +155,53 @@
             "Mod4+Shift+7" = "move container to workspace number 7";
             "Mod4+Shift+8" = "move container to workspace number 8";
             "Mod4+Shift+9" = "move container to workspace number 9";
+
+            # Move Windows in a certain direction
+            # Keyboard Motions
             "Mod4+Shift+Down" = "move down";
             "Mod4+Shift+Left" = "move left";
             "Mod4+Shift+Right" = "move right";
             "Mod4+Shift+Up" = "move up";
-            "Mod4+Shift+c" = "reload";
-            "Mod4+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+            # Vim Motions
             "Mod4+Shift+h" = "move left";
             "Mod4+Shift+j" = "move down";
             "Mod4+Shift+k" = "move up";
             "Mod4+Shift+l" = "move right";
             "Mod4+Shift+minus" = " move scratchpad";
+
+            # Window Options
             "Mod4+Shift+q" = "kill";
+            "Mod4+Shift+c" = "reload";
+
+            # Lock Screen
+            "Ctrl+Shift+l" = "exec swaymsg exit";
+
+            # PowerOff
+            "Mod4+c+h+u+j" = "exec poweroff";
+
             "Mod4+Shift+space" = "floating toggle";
-            "Mod4+Up" = "focus up";
-            "Mod4+a" = "focus parent";
+
+            # Split Options
             "Mod4+b" = "splith";
-            "Mod4+d" = "exec /nix/store/5llj78qhx10ldhglkss48bqa4yjs66ra-dmenu-5.4/bin/dmenu_path | /nix/store/5llj78qhx10ldhglkss48bqa4yjs66ra-dmenu-5.4/bin/dmenu | /nix/store/ibg16grw5is7i7ilnflc5xmj6fwksqkl-findutils-4.11.0/bin/xargs swaymsg exec --";
-            "Mod4+e" = "layout toggle split";
-            "Mod4+f" = "fullscreen toggle";
-            "Mod4+h" = "focus left";
-            "Mod4+j" = "focus down";
-            "Mod4+k" = "focus up";
-            "Mod4+l" = "focus right";
-            "Mod4+minus" = "scratchpad show";
-            "Mod4+r" = "mode resize";
-            "Mod4+s" = "layout stacking";
-            "Mod4+space" = "focus mode_toggle";
             "Mod4+v" = "splitv";
+
+            "Mod4+e" = "exec /nix/store/5llj78qhx10ldhglkss48bqa4yjs66ra-dmenu-5.4/bin/dmenu_path | /nix/store/5llj78qhx10ldhglkss48bqa4yjs66ra-dmenu-5.4/bin/dmenu | /nix/store/ibg16grw5is7i7ilnflc5xmj6fwksqkl-findutils-4.11.0/bin/xargs swaymsg exec --";
+
+            # Layout Controls
+            "Mod4+d" = "layout toggle split";
             "Mod4+w" = "layout tabbed";
+            "Mod4+s" = "layout stacking";
 
-};
+            "Mod4+f" = "fullscreen toggle";
 
-};
+            "Mod4+minus" = "scratchpad show";
 
-};
+            };
 
-};
+        };
 
+    };
+
+    };
 
 }
