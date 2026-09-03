@@ -99,6 +99,12 @@ services.greetd = {
     openFirewall = true;
   };
 
+  # xdg portal + pipewire = screensharing
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+  };
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
