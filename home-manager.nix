@@ -43,6 +43,8 @@
       signal-desktop
       element-desktop
       kitty
+      ddcutil
+      findutils
     ];
 
     programs.zsh = {
@@ -81,6 +83,8 @@
     # ricing
     programs.waybar.enable = true;
 
+    services.swayidle.enable = true;
+
     programs.swaylock = {
       enable = true;
       settings = {
@@ -114,6 +118,7 @@
             };
         };
 
+        
         keybindings = {
             # Brightness Controls
             "Ctrl+F7" = "exec brightnessctl set 5%-";
@@ -211,6 +216,17 @@
             };
 
         };
+extraConfig = ''
+            exec_always "killall -q swayidle; ${pkgs.swayidle}/bin/swayidle -w \
+            timeout 120 '${pkgs.ddcutil}/bin/ddcutil detect | ${pkgs.gawk}/bin/awk \"/Display/ {print \\$2}\" | ${pkgs.findutils}/bin/xargs -I{} ${pkgs.ddcutil}/bin/ddcutil setvcp 10 30 --display {}' \
+            resume '${pkgs.ddcutil}/bin/ddcutil detect | ${pkgs.gawk}/bin/awk \"/Display/ {print \\$2}\" | ${pkgs.findutils}/bin/xargs -I{} ${pkgs.ddcutil}/bin/ddcutil setvcp 10 100 --display {}' \
+            timeout 240 '${pkgs.swaylock}/bin/swaylock -f' \
+            timeout 300 '${pkgs.sway}/bin/swaymsg \"output * dpms off\"' \
+            resume '${pkgs.sway}/bin/swaymsg \"output * dpms on\"' \
+            timeout 1800 'systemctl suspend' \
+            before-sleep '${pkgs.swaylock}/bin/swaylock -f'"
+        '';
+
 
     };
 

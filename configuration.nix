@@ -59,6 +59,9 @@ services.greetd = {
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
 
+  # enable I2C for monitors
+  hardware.i2c.enable = true;
+
   time.timeZone = "Europe/Warsaw";
 
   # Select internationalisation properties.
