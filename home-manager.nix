@@ -46,6 +46,9 @@
       ddcutil
       findutils
       gawk
+      grim
+      slurp
+      sway-contrib.grimshot
     ];
 
     programs.zsh = {
@@ -214,9 +217,18 @@
 
             "Mod4+minus" = "scratchpad show";
 
+            # Super + Shift + S
+            # Screenshot a selection that saves to ~/Screenshots and copies to clipboard.
+            "Mod4+Shift+s" = "exec selection=$(slurp) && grim -g \"$selection\" - | tee ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy";
+
+            # Print Screen Button
+            # Screenshot the currently focused screen, save to ~/Screenshots and copy to clipboard.
+            "Print" = "exec grimshot save output - | tee ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png | wl-copy";
+
             };
 
         };
+        # Automatic lock and sleep
         extraConfig = ''
             exec_always "killall -q swayidle; ${pkgs.swayidle}/bin/swayidle -w \
             timeout 120 '${pkgs.ddcutil}/bin/ddcutil detect | ${pkgs.gawk}/bin/awk \"/Display/ {print \\$2}\" | ${pkgs.findutils}/bin/xargs -I{} ${pkgs.ddcutil}/bin/ddcutil setvcp 10 30 --display {}' \
