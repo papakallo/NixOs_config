@@ -4,13 +4,38 @@
 
 
 { config, pkgs, inputs, ... }:
-
+let
+  swayConfig = pkgs.writeText "greetd-sway-config" ''
+    # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
+    exec "${pkgs.gtkgreet}/bin/gtkgreet -l; swaymsg exit"
+    bindsym Mod4+shift+e exec swaynag \
+      -t warning \
+      -m 'What do you want to do?' \
+      -b 'Poweroff' 'systemctl poweroff' \
+      -b 'Reboot' 'systemctl reboot'
+  '';
+in
 {
   imports =
     [
       ./hardware-configuration.nix
       ./home-manager.nix
     ];
+
+services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
+      };
+    };
+  };
+
+  environment.etc."greetd/environments".text = ''
+    sway
+    bash
+    startplasma-wayland
+  '';
 
   # Bootloader.
   boot.loader = {
@@ -35,6 +60,9 @@
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
 
+  # enable I2C for monitors
+  hardware.i2c.enable = true;
+
   time.timeZone = "Europe/Warsaw";
 
   # Select internationalisation properties.
@@ -57,6 +85,10 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  # secuirty for sway
+  security.polkit.enable = true;
+  security.pam.services.swaylock = {};
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "pl,ru,ua,de";
@@ -70,6 +102,12 @@
     enable = true;
     nssmdns4 = true;
     openFirewall = true;
+  };
+
+  # xdg portal + pipewire = screensharing
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
   };
 
   # Enable sound with pipewire.
@@ -114,7 +152,7 @@
   users.users.papakallo = {
     isNormalUser = true;
     description = "Papakallo";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
   };
 
 
@@ -124,9 +162,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+     vim
      git
      gh
+     brightnessctl
    ];
 
 
