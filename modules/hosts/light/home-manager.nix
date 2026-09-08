@@ -1,8 +1,6 @@
-{ config, pkgs, inputs, ... }:
-  # Create a customized version of logseq
-#  logseq-patch = pkgs.logseq.override {
-#    electron_27 = pkgs.electron_34;
-#  };
+{ self, inputs, ... }: {
+
+    flake.nixosModules.lightHome = { pkgs, ... }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -244,5 +242,7 @@
     };
 
     };
+
+};
 
 }

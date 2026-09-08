@@ -1,9 +1,6 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+{ self, inputs, ... }: {
 
-
-{ config, pkgs, inputs, ... }:
+  flake.nixosModules.lightConfiguration = { pkgs, lib, ... }:
 let
   swayConfig = pkgs.writeText "greetd-sway-config" ''
     # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
@@ -15,14 +12,14 @@ let
       -b 'Reboot' 'systemctl reboot'
   '';
 in
-{
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./home-manager.nix
+  {
+
+    imports = [
+      self.nixosModules.lightHardware
+      self.nixosModules.lightHome
     ];
 
-services.greetd = {
+    services.greetd = {
     enable = true;
     settings = {
       default_session = {
@@ -237,5 +234,9 @@ programs.zsh.enable = true;
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
+
+
+
+  };
 
 }
