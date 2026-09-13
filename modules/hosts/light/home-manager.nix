@@ -11,7 +11,7 @@
 
   home-manager.sharedModules = [
         self.homeModules.sway
-        self.homeModules2.my_packages
+        self.homeModules.packages
   ];
 
 

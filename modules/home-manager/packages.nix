@@ -1,5 +1,5 @@
 { self, inputs, ...}: {
-    flake.homeModules2.my_packages = { pkgs, lib, ... }:
+    flake.homeModules.packages = { pkgs, lib, ... }:
     {
         home.packages = with pkgs; [
             unzip
