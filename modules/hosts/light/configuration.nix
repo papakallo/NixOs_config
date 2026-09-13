@@ -163,6 +163,7 @@ in
      git
      gh
      brightnessctl
+     lshw
    ];
 
 
