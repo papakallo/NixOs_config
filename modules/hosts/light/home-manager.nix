@@ -11,46 +11,13 @@
 
   home-manager.sharedModules = [
         self.homeModules.sway
+        self.homeModules2.my_packages
   ];
 
 
   home-manager.users.papakallo = { config, lib, ... }: {
     /* The home.stateVersion option does not have a default and must be set */
     home.stateVersion = "26.05";
-
-    home.packages = with pkgs; [
-      unzip
-      vlc
-      obs-studio
-      gimp3-with-plugins
-      wget
-      vscode
-      libreoffice-qt
-      hunspell
-      hunspellDicts.pl_PL 
-      spotify
-      dosbox-staging
-      openmw
-      kdePackages.kate
-      telegram-desktop
-      discord-ptb
-      distrobox
-      atlauncher
-      feh
-      kicad
-      # temporarily removed, because the branch is very unstable
-      # freecad
-      nomachine-client
-      signal-desktop
-      element-desktop
-      kitty
-      ddcutil
-      findutils
-      gawk
-      grim
-      slurp
-      sway-contrib.grimshot
-    ];
 
     programs.zsh = {
         enable = true;
