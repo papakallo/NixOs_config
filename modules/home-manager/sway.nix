@@ -1,6 +1,5 @@
 { self, inputs, ... }: {
     flake.homeModules.sway = { pkgs, lib, ... }: {
-        # programs.sway = {
         wayland.windowManager.sway = {
             enable = true;
 
@@ -142,8 +141,5 @@
 
         };
     };
-
-        # };
-    # };
 
 }
