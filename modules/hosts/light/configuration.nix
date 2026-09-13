@@ -17,6 +17,7 @@ in
     imports = [
       self.nixosModules.lightHardware
       self.nixosModules.lightHome
+      self.nixosModules.lightNvidia
     ];
 
     services.greetd = {
