@@ -24,13 +24,13 @@
 
               keybindings = {
                   # Brightness Controls
-                  "Ctrl+F7" = "exec brightnessctl set 5%-";
-                  "Ctrl+F8" = "exec brightnessctl set 5%+";
+                  "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+                  "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
 
                   # Volume Controls
-                  "Ctrl+F3" = "exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
-                  "Ctrl+F2" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-                  "Ctrl+F1" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+                  "XF86AudioRaiseVolume" = "exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
+                  "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+                  "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
 
                   # Movements
                   "Mod4+0" = "workspace number 10";
@@ -90,8 +90,8 @@
                   "Mod4+Shift+minus" = " move scratchpad";
 
                   # Window Options
-                  "Mod4+Shift+q" = "kill";
-                  "Mod4+Shift+c" = "reload";
+                  "Mod4+q" = "kill";
+                  "Mod4+c" = "reload";
 
                   # Lock Screen
                   "Ctrl+Shift+l" = "exec swaylock -f";
@@ -105,14 +105,18 @@
                   "Mod4+b" = "splith";
                   "Mod4+v" = "splitv";
 
+                  # Open dmenu
                   "Mod4+e" = "exec /nix/store/5llj78qhx10ldhglkss48bqa4yjs66ra-dmenu-5.4/bin/dmenu_path | /nix/store/5llj78qhx10ldhglkss48bqa4yjs66ra-dmenu-5.4/bin/dmenu | /nix/store/ibg16grw5is7i7ilnflc5xmj6fwksqkl-findutils-4.11.0/bin/xargs swaymsg exec --";
+
+                  # Open File Explorer
+                  "Mod4+f" = "exec dolphin";
 
                   # Layout Controls
                   "Mod4+d" = "layout toggle split";
                   "Mod4+w" = "layout tabbed";
                   "Mod4+s" = "layout stacking";
 
-                  "Mod4+f" = "fullscreen toggle";
+                  "Mod4+Shift+f" = "fullscreen toggle";
 
                   "Mod4+minus" = "scratchpad show";
 
