@@ -96,6 +96,9 @@
                   # Lock Screen
                   "Ctrl+Shift+l" = "exec swaylock -f";
 
+                  # Log out
+                  "Ctrl+Shift+g" = "exit";
+
                   # PowerOff
                   "Mod4+c+h+u+j" = "exec poweroff";
 
