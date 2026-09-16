@@ -26,8 +26,8 @@
             nomachine-client
             signal-desktop
             element-desktop
-            kitty
             ddcutil
+            wofi
             findutils
             gawk
             grim

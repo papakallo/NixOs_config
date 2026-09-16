@@ -6,11 +6,12 @@
             wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
             config = rec {
               modifier = "Mod4";
-              terminal = "kitty";
+              terminal = "konsole";
               # startup = [
               #   # Launch Firefox on start
               #   { command = "firefox"; }
               # ];
+              menu = "${pkgs.wofi}/bin/wofi";
               input = {
                   "type:touchpad" = {
                       # Enables or disables tap for specified input device.
@@ -62,7 +63,7 @@
                   "Mod4+r" = "mode resize";
 
                   # Terminal
-                  "Mod4+Home" = "exec kitty";
+                  "Mod4+Home" = "exec ${pkgs.kdePackages.konsole}/bin/konsole";
 
                   # move window to other workspace
                   "Mod4+Shift+0" = "move container to workspace number 10";
@@ -109,7 +110,7 @@
                   "Mod4+v" = "splitv";
 
                   # Open dmenu
-                  "Mod4+e" = "exec /nix/store/5llj78qhx10ldhglkss48bqa4yjs66ra-dmenu-5.4/bin/dmenu_path | /nix/store/5llj78qhx10ldhglkss48bqa4yjs66ra-dmenu-5.4/bin/dmenu | /nix/store/ibg16grw5is7i7ilnflc5xmj6fwksqkl-findutils-4.11.0/bin/xargs swaymsg exec --";
+                  "Mod4+e" = "exec ${pkgs.wofi}/bin/wofi --show drun";
 
                   # Open File Explorer
                   "Mod4+f" = "exec dolphin";
