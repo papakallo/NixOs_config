@@ -9,6 +9,7 @@
                 indicator-radius = 100;
                 line-color = "ffffff";
                 show-failed-attempts = true;
+                image = "/home/papakallo/Pictures/media/caesar.png";
             };
         };
     };
