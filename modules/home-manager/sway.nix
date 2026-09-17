@@ -21,6 +21,10 @@
                       # Enables or disables disable-while-typing for the specified input device.
                       dwt = "enabled";
                   };
+                  "type:keyboard" = {
+                      xkb_layout = "pl,ru,ua,de";
+                      xkb_options = "grp:alt_shift_toggle";
+                  };
               };
 
               keybindings = {
