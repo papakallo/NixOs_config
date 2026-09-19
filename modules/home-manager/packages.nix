@@ -7,7 +7,6 @@
             obs-studio
             gimp3-with-plugins
             wget
-            vscode
             libreoffice-qt
             hunspell
             hunspellDicts.pl_PL 

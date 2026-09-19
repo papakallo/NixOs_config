@@ -1,11 +1,10 @@
 { self, inputs, ...}: {
-    flake.homeModules.vscode = { pkgs, lib, ... }:
+    flake.homeModules.vscodium = { pkgs, lib, ... }:
     {
-        programs.vscode = {
+        programs.vscodium = {
             enable = true;
             profiles.default.extensions = with pkgs.vscode-extensions; [
                 dracula-theme.theme-dracula
-                vscodevim.vim
                 yzhang.markdown-all-in-one
                 zainchen.json
                 ms-python.python
@@ -13,6 +12,7 @@
                 ms-vscode.cpptools
                 ms-vscode.cmake-tools
                 ms-vscode-remote.remote-ssh
+                james-yu.latex-workshop
             ];
         };
     };

@@ -12,7 +12,7 @@
   home-manager.sharedModules = [
         self.homeModules.sway
         self.homeModules.packages
-        self.homeModules.vscode
+        self.homeModules.vscodium
         self.homeModules.git
         self.homeModules.waybar
         self.homeModules.swaylock
