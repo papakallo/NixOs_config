@@ -2,6 +2,8 @@
     flake.homeModules.sway = { pkgs, lib, ... }: {
         wayland.windowManager.sway = {
             enable = true;
+            #TODO:set background properly inside nix assets
+            checkConfig = false;
 
             wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
             config = rec {
@@ -25,6 +27,12 @@
                       xkb_layout = "pl,ru,ua,de";
                       xkb_options = "grp:alt_shift_toggle";
                   };
+              };
+
+              output = {
+                "*" = {
+                    bg = "/home/papakallo/Pictures/wallpapers/Asuka_Deutschland.png fill";
+                 };
               };
 
               keybindings = {
