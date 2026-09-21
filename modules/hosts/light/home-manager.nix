@@ -19,6 +19,7 @@
         self.homeModules.swayidle
         self.homeModules.zsh
         self.homeModules.neovim
+        self.homeModules.logseq
   ];
 
 
