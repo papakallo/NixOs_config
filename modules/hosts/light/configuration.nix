@@ -78,7 +78,6 @@
   environment.systemPackages = with pkgs; [
      vim
      git
-     gh
      brightnessctl
      lshw
    ];
