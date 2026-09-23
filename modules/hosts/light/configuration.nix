@@ -1,19 +1,5 @@
 { self, inputs, ... }: {
-
-  flake.nixosModules.lightConfiguration = { pkgs, lib, ... }:
-let
-  swayConfig = pkgs.writeText "greetd-sway-config" ''
-    # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
-    exec "${pkgs.gtkgreet}/bin/gtkgreet -l; swaymsg exit"
-    bindsym Mod4+shift+e exec swaynag \
-      -t warning \
-      -m 'What do you want to do?' \
-      -b 'Poweroff' 'systemctl poweroff' \
-      -b 'Reboot' 'systemctl reboot'
-  '';
-in
-  {
-
+  flake.nixosModules.lightConfiguration = { pkgs, lib, ... }: {
     imports = [
       self.nixosModules.lightHardware
       self.nixosModules.lightHome
@@ -34,22 +20,9 @@ in
       self.nixosModules.steam
       self.nixosModules.nix-ld
       self.nixosModules.zsh
+      self.nixosModules.greetd
+      self.nixosModules.security
     ];
-
-    services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
-      };
-    };
-  };
-
-  environment.etc."greetd/environments".text = ''
-    sway
-    bash
-    startplasma-wayland
-  '';
 
   # Bootloader.
   boot.loader = {
@@ -86,10 +59,7 @@ in
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  # secuirty for sway
-  security.polkit.enable = true;
-  security.pam.services.swaylock = {};
-
+  
 
   # xdg portal + pipewire = screensharing
   xdg.portal = {
@@ -97,7 +67,6 @@ in
     wlr.enable = true;
   };
 
-  security.rtkit.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.papakallo = {
@@ -105,12 +74,11 @@ in
     description = "Papakallo";
     extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
   };
+  users.extraGroups.vboxusers.members = [ "papakallo" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
      vim
      git
@@ -121,7 +89,6 @@ in
 
   # virtualbox
   virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "papakallo" ];
 
   #docker
   virtualisation.docker.enable = true;
