@@ -22,9 +22,10 @@
       self.nixosModules.zsh
       self.nixosModules.greetd
       self.nixosModules.security
+      self.nixosModules.virtualisation
     ];
 
-  # Bootloader.
+  # Bootloader
   boot.loader = {
     grub = {
       enable = true;
@@ -38,7 +39,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   hardware.bluetooth.enable = true;
-
   # enable I2C for monitors
   hardware.i2c.enable = true;
 
@@ -59,7 +59,6 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  
 
   # xdg portal + pipewire = screensharing
   xdg.portal = {
@@ -67,8 +66,6 @@
     wlr.enable = true;
   };
 
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.papakallo = {
     isNormalUser = true;
     description = "Papakallo";
@@ -76,7 +73,6 @@
   };
   users.extraGroups.vboxusers.members = [ "papakallo" ];
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -86,14 +82,6 @@
      brightnessctl
      lshw
    ];
-
-  # virtualbox
-  virtualisation.virtualbox.host.enable = true;
-
-  #docker
-  virtualisation.docker.enable = true;
-  virtualisation.docker.storageDriver = "btrfs"; 
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
