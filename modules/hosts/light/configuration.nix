@@ -28,6 +28,7 @@ in
       self.nixosModules.pipewire
       self.nixosModules.flatpak
       self.nixosModules.openssh
+      self.nixosModules.networking
     ];
 
     services.greetd = {
@@ -58,9 +59,6 @@ in
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  networking.hostName = "light";
-
-  networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
 
   # enable I2C for monitors
@@ -153,9 +151,6 @@ in
  };
 
 programs.zsh.enable = true;
-
-
-  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
