@@ -29,6 +29,11 @@ in
       self.nixosModules.flatpak
       self.nixosModules.openssh
       self.nixosModules.networking
+      self.nixosModules.appimage
+      self.nixosModules.firefox
+      self.nixosModules.steam
+      self.nixosModules.nix-ld
+      self.nixosModules.zsh
     ];
 
     services.greetd = {
@@ -101,7 +106,6 @@ in
     extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
   };
 
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -115,42 +119,14 @@ in
      lshw
    ];
 
+  # virtualbox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "papakallo" ];
 
-  programs.firefox.enable = true;
+  #docker
+  virtualisation.docker.enable = true;
+  virtualisation.docker.storageDriver = "btrfs"; 
 
-  programs.steam = {
-      enable = true;
-      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-      localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-      gamescopeSession.enable = true;
-    };
-
-
- # virtualbox
- virtualisation.virtualbox.host.enable = true;
- users.extraGroups.vboxusers.members = [ "papakallo" ];
-
- #docker
- virtualisation.docker.enable = true;
- virtualisation.docker.storageDriver = "btrfs"; 
-
-
- programs.appimage.enable = true;
- programs.appimage.binfmt = true;
-
-
- programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-        stdenv.cc.cc
-        zlib
-        glibc
-        openssl
-    ];
- };
-
-programs.zsh.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -159,9 +135,6 @@ programs.zsh.enable = true;
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
-
-
   };
 
 }
