@@ -18,6 +18,16 @@ in
       self.nixosModules.lightHardware
       self.nixosModules.lightHome
       self.nixosModules.lightNvidia
+      self.nixosModules.printing
+      self.nixosModules.xserver
+      self.nixosModules.displayManager
+      self.nixosModules.desktopManager
+      self.nixosModules.avahi
+      self.nixosModules.syncthing
+      self.nixosModules.tailscale
+      self.nixosModules.pipewire
+      self.nixosModules.flatpak
+      self.nixosModules.openssh
     ];
 
     services.greetd = {
@@ -78,29 +88,10 @@ in
     LC_TIME = "pl_PL.UTF-8";
   };
 
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
   # secuirty for sway
   security.polkit.enable = true;
   security.pam.services.swaylock = {};
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "pl,ru,ua,de";
-    variant = "";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
 
   # xdg portal + pipewire = screensharing
   xdg.portal = {
@@ -108,43 +99,7 @@ in
     wlr.enable = true;
   };
 
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # syncthing
-  services.syncthing = {
-    enable = true;
-    group = "syncthing";
-    user = "papakallo";
-    dataDir = "/home/papakallo/Documents";
-    configDir = "/home/papakallo/.config/syncthing";
-  };
-
-  services.tailscale = {
-    # Enable tailscale at startup
-    enable = true;
-
-    # If you would like to use a preauthorized key, set
-    # authKeyFile = "/run/secrets/tailscale_key";
-    # Note: maximum expire time is 90 days
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.papakallo = {
@@ -187,13 +142,7 @@ in
  virtualisation.docker.enable = true;
  virtualisation.docker.storageDriver = "btrfs"; 
 
- # virtualisation.podman = {
- #  enable = true;
- #  dockerCompat = true;
- # };
 
-
- services.flatpak.enable = true;
  programs.appimage.enable = true;
  programs.appimage.binfmt = true;
 
@@ -218,10 +167,6 @@ programs.zsh.enable = true;
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ 8384 22000 ];
