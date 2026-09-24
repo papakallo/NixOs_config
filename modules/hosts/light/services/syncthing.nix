@@ -1,5 +1,6 @@
 { self, inputs, ... }: {
     flake.nixosModules.syncthing = { pkgs, lib, ... }: {
+        #TODO: make syncthing more declarative
         services.syncthing = {
             enable = true;
             group = "syncthing";
