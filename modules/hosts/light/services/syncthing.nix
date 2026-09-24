@@ -6,6 +6,7 @@
             user = "papakallo";
             dataDir = "/home/papakallo/Documents";
             configDir = "/home/papakallo/.config/syncthing";
+            openDefaultPorts = true;
         };
     };
 }
