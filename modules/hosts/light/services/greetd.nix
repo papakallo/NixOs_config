@@ -12,15 +12,19 @@
         '';
     in
     {
-        services.greetd = {
-            enable = true;
-            settings = {
-                default_session = {
-                    command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
-                };
-            };
-        };
+        # services.greetd = {
+        #     enable = true;
+        #     settings = {
+        #         default_session = {
+        #             # command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
+        #             command = "${pkgs.regreet}/bin/regreet";
+        #             user = "papakallo";
+        #         };
+        #     };
+        # };
 
+        # Manually publish the Wayland session file to the system path
+        services.displayManager.sessionPackages = [ pkgs.sway ];
         environment.etc."greetd/environments".text = ''
             sway
             bash

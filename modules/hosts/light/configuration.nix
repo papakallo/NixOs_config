@@ -6,7 +6,7 @@
       self.nixosModules.lightNvidia
       self.nixosModules.printing
       self.nixosModules.xserver
-      self.nixosModules.displayManager
+      # self.nixosModules.displayManager
       self.nixosModules.desktopManager
       self.nixosModules.avahi
       self.nixosModules.syncthing
@@ -20,9 +20,10 @@
       self.nixosModules.steam
       self.nixosModules.nix-ld
       self.nixosModules.zsh
-      self.nixosModules.greetd
+      # self.nixosModules.greetd
       self.nixosModules.security
       self.nixosModules.virtualisation
+      self.nixosModules.regreet
     ];
 
   # Bootloader
@@ -68,7 +69,7 @@
 
   users.users.papakallo = {
     isNormalUser = true;
-    description = "Papakallo";
+    description = "papakallo";
     extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
   };
   users.extraGroups.vboxusers.members = [ "papakallo" ];
@@ -80,6 +81,8 @@
      git
      brightnessctl
      lshw
+     cantarell-fonts
+     adwaita-icon-theme
    ];
 
   # This value determines the NixOS release from which the default
