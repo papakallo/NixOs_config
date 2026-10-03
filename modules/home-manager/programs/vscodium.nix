@@ -12,6 +12,9 @@
                 ms-vscode.cpptools
                 ms-vscode.cmake-tools
                 ms-vscode-remote.remote-ssh
+                ms-azuretools.vscode-containers
+                ms-azuretools.vscode-docker
+                docker.docker
                 james-yu.latex-workshop
             ];
         };
