@@ -39,6 +39,11 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-41.10.6"
+  ];
+
   hardware.bluetooth.enable = true;
   # enable I2C for monitors
   hardware.i2c.enable = true;
