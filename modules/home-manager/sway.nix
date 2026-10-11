@@ -29,6 +29,12 @@
                   };
               };
 
+              bars = [
+              {
+                   command = "${pkgs.waybar}/bin/waybar";
+              }
+              ];
+
               output = {
                 "*" = {
                     bg = "/home/papakallo/Pictures/wallpapers/Asuka_Deutschland.png fill";
