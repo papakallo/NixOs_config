@@ -16,11 +16,8 @@
               menu = "${pkgs.wofi}/bin/wofi";
               input = {
                   "type:touchpad" = {
-                      # Enables or disables tap for specified input device.
                       tap = "enabled";
-                      # Enables or disables natural (inverted) scrolling for the specified input device.
                       natural_scroll = "enabled";
-                      # Enables or disables disable-while-typing for the specified input device.
                       dwt = "enabled";
                   };
                   "type:keyboard" = {
@@ -50,6 +47,9 @@
                   "XF86AudioRaiseVolume" = "exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
                   "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
                   "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+
+                  # Microphone Volume Control
+                  "XF86AudioMicMute" = "exec swayosd-client --input-volume mute-toggle";
 
                   # Movements
                   "Mod4+0" = "workspace number 10";
@@ -119,7 +119,7 @@
                   "Ctrl+Shift+g" = "exit";
 
                   # PowerOff
-                  "Mod4+c+h+u+j" = "exec poweroff";
+                  "Mod4+escape" = "exec poweroff";
 
                   "Mod4+Shift+space" = "floating toggle";
 

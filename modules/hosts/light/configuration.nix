@@ -6,7 +6,6 @@
       self.nixosModules.lightNvidia
       self.nixosModules.printing
       self.nixosModules.xserver
-      # self.nixosModules.displayManager
       self.nixosModules.desktopManager
       self.nixosModules.avahi
       self.nixosModules.syncthing
@@ -20,7 +19,6 @@
       self.nixosModules.steam
       self.nixosModules.nix-ld
       self.nixosModules.zsh
-      # self.nixosModules.greetd
       self.nixosModules.security
       self.nixosModules.virtualisation
       self.nixosModules.regreet
@@ -88,6 +86,7 @@
      lshw
      cantarell-fonts
      adwaita-icon-theme
+     wl-clipboard
    ];
 
   fonts.packages = with pkgs; [
