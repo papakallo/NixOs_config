@@ -20,6 +20,7 @@
         self.homeModules.zsh
         self.homeModules.neovim
         self.homeModules.logseq
+        self.homeModules.qutebrowser
   ];
 
 
