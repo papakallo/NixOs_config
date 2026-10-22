@@ -21,6 +21,7 @@
         self.homeModules.neovim
         self.homeModules.logseq
         self.homeModules.qutebrowser
+        self.homeModules.mako
   ];
 
 
