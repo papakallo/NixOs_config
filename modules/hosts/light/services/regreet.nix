@@ -2,7 +2,7 @@
     flake.nixosModules.regreet = { pkgs, lib, ... }: {
         # export sway, so regreet would see it
         services.displayManager.sessionPackages = [ pkgs.sway ];
-        programs.regreet = {
+        services.displayManager.regreet = {
             enable = true;
             theme = {
                 name = "Adwaita-dark";
