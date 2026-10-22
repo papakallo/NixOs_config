@@ -153,7 +153,7 @@
             };
 
         };
-        # Automatic lock and sleep
+
         extraConfig = ''
             exec_always "killall -q swayidle; ${pkgs.swayidle}/bin/swayidle -w \
             timeout 120 '${pkgs.ddcutil}/bin/ddcutil detect | ${pkgs.gawk}/bin/awk \"/Display/ {print \\$2}\" | ${pkgs.findutils}/bin/xargs -I{} ${pkgs.ddcutil}/bin/ddcutil setvcp 10 30 --display {}' \
@@ -163,6 +163,8 @@
             resume '${pkgs.sway}/bin/swaymsg \"output * dpms on\"' \
             timeout 1800 'systemctl suspend' \
             before-sleep '${pkgs.swaylock}/bin/swaylock -f'"
+            for_window [app_id="^.*"] inhibit_idle fullscreen
+            for_window [class="^.*"] inhibit_idle fullscreen 
         '';
 
         };
