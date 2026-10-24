@@ -11,7 +11,7 @@
             hunspell
             hunspellDicts.pl_PL 
             spotify
-            dosbox-staging
+            # dosbox-staging
             openmw
             kdePackages.kate
             telegram-desktop
@@ -22,7 +22,7 @@
             kicad
             # temporarily removed, because the branch is very unstable
             # freecad
-            nomachine-client
+            # nomachine-client
             signal-desktop
             element-desktop
             ddcutil
