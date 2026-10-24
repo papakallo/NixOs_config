@@ -22,6 +22,7 @@
         self.homeModules.logseq
         self.homeModules.qutebrowser
         self.homeModules.mako
+        self.homeModules.freetube
   ];
 
 
