@@ -22,7 +22,7 @@
                   };
                   "type:keyboard" = {
                       xkb_layout = "pl,ru,ua,de";
-                      xkb_options = "grp:alt_shift_toggle";
+                      xkb_options = "grp:ctrl_shift_toggle";
                   };
               };
 
@@ -166,6 +166,8 @@
             for_window [app_id="^.*"] inhibit_idle fullscreen
             for_window [class="^.*"] inhibit_idle fullscreen 
         '';
+
+        extraOptions = ["--unsupported-gpu"];
 
         };
     };
