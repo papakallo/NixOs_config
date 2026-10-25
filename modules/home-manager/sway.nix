@@ -22,7 +22,7 @@
                   };
                   "type:keyboard" = {
                       xkb_layout = "pl,ru,ua,de";
-                      xkb_options = "grp:ctrl_shift_toggle";
+                      xkb_options = "grp:ctrl_alt_toggle";
                   };
               };
 
