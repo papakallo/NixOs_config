@@ -8,7 +8,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs"; # follow the same Nixpkgs input as the rest of their flake. This avoids a second Nixpkgs input and makes Home Manager use the same pinned Nixpkgs source revision as the rest of the configuration. Removes compatibility with home manager lock file
 
-    nvim-config.url = "github:papakallo/kickstart.nvim?ref=master";
+    nvim-config.url = "github:papakallo/kickstart.nvim?ref=old_copy";
     nvim-config.flake = false;
 
   };
