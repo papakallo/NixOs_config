@@ -20,7 +20,7 @@
         self.homeModules.zsh
         self.homeModules.neovim
         self.homeModules.logseq
-        self.homeModules.qutebrowser
+        # self.homeModules.qutebrowser
         self.homeModules.mako
         self.homeModules.freetube
   ];
