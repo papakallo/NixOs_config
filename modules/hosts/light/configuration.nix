@@ -22,6 +22,7 @@
       self.nixosModules.security
       self.nixosModules.virtualisation
       self.nixosModules.regreet
+      self.nixosModules.zerotierone
     ];
 
   # Bootloader
@@ -87,6 +88,7 @@
      cantarell-fonts
      adwaita-icon-theme
      wl-clipboard
+     vintagestory
    ];
 
   fonts.packages = with pkgs; [
