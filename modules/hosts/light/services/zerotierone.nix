@@ -3,7 +3,7 @@
 services.zerotierone = {
   enable = true;
   joinNetworks = [
-    "d5e5fb653774a84a"
+    "d5e5fb653774a84a" # Lumpy
   ];
 };    };
 }
