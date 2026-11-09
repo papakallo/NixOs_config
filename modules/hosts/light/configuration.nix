@@ -89,6 +89,7 @@
      adwaita-icon-theme
      wl-clipboard
      vintagestory
+     gocryptfs
    ];
 
   fonts.packages = with pkgs; [
