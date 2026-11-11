@@ -93,12 +93,18 @@
    ];
 
 systemd.user.services.my-cool-user-service = {
-          name = "wallpaperChanger";
+          name = "wallpaperChanger ";
           enable = true;
-          # description = "wallpaper changer script for sway";
+          description = "wallpaper changer script for sway";
+          after = [ "sway-session.target" ];
+          wantedBy = [ "sway-session.target" ];
+          unitConfig = {
+            ConditionEnvironment="WAYLAND_DISPLAY";
+          };
           serviceConfig = {
-            Type = "simple";
+            Type = "exec";
             ExecStart = ''/home/papakallo/projects/NixOs_config/modules/hosts/light/change_wallpaper.sh'';
+            Restart = "no";
           };
         };
 
