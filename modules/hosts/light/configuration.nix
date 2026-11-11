@@ -92,21 +92,24 @@
      gocryptfs
    ];
 
-systemd.user.services.my-cool-user-service = {
-          name = "wallpaperChanger ";
-          enable = true;
-          description = "wallpaper changer script for sway";
-          after = [ "sway-session.target" ];
-          wantedBy = [ "sway-session.target" ];
-          unitConfig = {
-            ConditionEnvironment="WAYLAND_DISPLAY";
-          };
-          serviceConfig = {
-            Type = "exec";
-            ExecStart = ''/home/papakallo/projects/NixOs_config/modules/hosts/light/change_wallpaper.sh'';
-            Restart = "no";
-          };
-        };
+   systemd.user.services.my-cool-user-service = {
+             name = "wallpaperChanger ";
+             enable = true;
+             description = "wallpaper changer script for sway";
+             after = [ "sway-session.target" ];
+             wantedBy = [ "sway-session.target" ];
+
+             # service needs access to sway and bash
+             path = [ pkgs.sway pkgs.bash pkgs.coreutils ];
+             unitConfig = {
+               ConditionEnvironment="WAYLAND_DISPLAY";
+             };
+             serviceConfig = {
+               Type = "exec";
+               ExecStart = ''/home/papakallo/projects/NixOs_config/modules/hosts/light/change_wallpaper.sh'';
+               Restart = "no";
+             };
+   };
 
   fonts.packages = with pkgs; [
      font-awesome_4
