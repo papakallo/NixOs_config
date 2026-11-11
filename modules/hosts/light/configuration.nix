@@ -101,9 +101,6 @@
 
              # service needs access to sway and bash
              path = [ pkgs.sway pkgs.bash pkgs.coreutils ];
-             unitConfig = {
-               ConditionEnvironment="WAYLAND_DISPLAY";
-             };
              serviceConfig = {
                Type = "exec";
                ExecStart = ''/home/papakallo/projects/NixOs_config/modules/hosts/light/change_wallpaper.sh'';
