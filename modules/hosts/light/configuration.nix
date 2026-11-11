@@ -92,6 +92,16 @@
      gocryptfs
    ];
 
+systemd.user.services.my-cool-user-service = {
+          name = "wallpaperChanger";
+          enable = true;
+          # description = "wallpaper changer script for sway";
+          serviceConfig = {
+            Type = "simple";
+            ExecStart = ''/home/papakallo/projects/NixOs_config/modules/hosts/light/change_wallpaper.sh'';
+          };
+        };
+
   fonts.packages = with pkgs; [
      font-awesome_4
   ];

@@ -17,7 +17,6 @@
             telegram-desktop
             discord-ptb
             distrobox
-            atlauncher
             feh
             kicad
             # temporarily removed, because the branch is very unstable
