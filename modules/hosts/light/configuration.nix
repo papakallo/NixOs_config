@@ -23,6 +23,7 @@
       self.nixosModules.virtualisation
       self.nixosModules.regreet
       self.nixosModules.zerotierone
+      self.nixosModules.wallpaperChanger
     ];
 
   # Bootloader
