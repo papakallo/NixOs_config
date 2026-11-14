@@ -11,7 +11,7 @@
             path = [ pkgs.sway pkgs.bash pkgs.coreutils ];
             serviceConfig = {
                 Type = "exec";
-                ExecStart = ''/home/papakallo/projects/NixOs_config/modules/hosts/light/change_wallpaper.sh'';
+                ExecStart = ''/home/papakallo/projects/NixOs_config/modules/hosts/light/services/change_wallpaper.sh'';
                 Restart = "no";
             };
         };
