@@ -10,6 +10,17 @@
     boot.kernelModules = [ "kvm-intel" ];
     boot.extraModulePackages = [ ];
 
+    # Bootloader
+    boot.loader = {
+        grub = {
+            enable = true;
+            device = "nodev"; # "nodev" is used for UEFI
+            efiSupport = true;
+        };
+        efi.canTouchEfiVariables = true;
+    };
+
+
     fileSystems."/" =
       { device = "/dev/mapper/luks-3fc5e772-d840-4bdc-a4c7-e6fa55c73f27";
         fsType = "btrfs";
@@ -40,7 +51,12 @@
       ];
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
     hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    hardware.bluetooth.enable = true;
+    # enable I2C for monitors
+    hardware.i2c.enable = true;
+
   };
 
 }

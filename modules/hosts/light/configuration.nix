@@ -26,16 +26,6 @@
       self.nixosModules.wallpaperChanger
     ];
 
-  # Bootloader
-  boot.loader = {
-    grub = {
-      enable = true;
-      device = "nodev"; # "nodev" is used for UEFI
-      efiSupport = true;
-    };
-    efi.canTouchEfiVariables = true;
-  };
-
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -44,9 +34,6 @@
     "electron-41.10.7"
   ];
 
-  hardware.bluetooth.enable = true;
-  # enable I2C for monitors
-  hardware.i2c.enable = true;
 
   time.timeZone = "Europe/Warsaw";
 
