@@ -22,7 +22,6 @@
             # temporarily removed, because the branch is very unstable
             # freecad
             # nomachine-client
-            signal-desktop
             element-desktop
             ddcutil
             wofi
@@ -31,6 +30,17 @@
             grim
             slurp
             sway-contrib.grimshot
+
+            # Electron Apps do not detect password store
+            (symlinkJoin {
+                name = "signal-desktop";
+                paths = [ signal-desktop ];
+                nativeBuildInputs = [ makeWrapper ];
+                postBuild = ''
+                  wrapProgram $out/bin/signal-desktop \
+                    --add-flags "--password-store=kwallet6"
+                '';
+            })
         ];
     };
 
