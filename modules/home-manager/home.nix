@@ -11,7 +11,6 @@
 
   home-manager.sharedModules = [
         self.homeModules.sway
-        self.homeModules.packages
         self.homeModules.vscodium
         self.homeModules.git
         self.homeModules.waybar
@@ -27,8 +26,47 @@
   ];
 
 
-  home-manager.users.papakallo = { config, lib, ... }: {
-    home.stateVersion = "26.05";
+    home-manager.users.papakallo = { config, lib, ... }: {
+        home.stateVersion = "26.05";
+
+        home.packages = with pkgs; [
+            unzip
+            vlc
+            obs-studio
+            gimp3-with-plugins
+            wget
+            libreoffice-qt
+            hunspell
+            hunspellDicts.pl_PL 
+            spotify
+            openmw
+            kdePackages.kate
+            telegram-desktop
+            discord-ptb
+            distrobox
+            feh
+            kicad
+            # nomachine-client
+            element-desktop
+            ddcutil
+            wofi
+            findutils
+            gawk
+            grim
+            slurp
+            sway-contrib.grimshot
+
+            # Electron Apps do not detect password store
+            (symlinkJoin {
+                name = "signal-desktop";
+                paths = [ signal-desktop ];
+                nativeBuildInputs = [ makeWrapper ];
+                postBuild = ''
+                  wrapProgram $out/bin/signal-desktop \
+                    --add-flags "--password-store=kwallet6"
+                '';
+            })
+        ];
 
     };
 
