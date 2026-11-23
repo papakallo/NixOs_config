@@ -55,6 +55,7 @@
             grim
             slurp
             sway-contrib.grimshot
+            kdePackages.kdenlive
 
             # Electron Apps do not detect password store
             (symlinkJoin {
